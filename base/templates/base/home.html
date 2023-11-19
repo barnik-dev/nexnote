@@ -1,0 +1,71 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container container">
+    <!-- LOGO -->
+    <div class="logo">
+      <span class="logo-initials">N</span>ex<span class="logo-initials">N</span
+      >ote
+    </div>
+    <!-- SIGNUP BTN -->
+    <a href="{% url 'signup' %}" class="signup-btn primary-btn">SignUp</a>
+  </div>
+</nav>
+
+<!-- TAG LINE -->
+<div class="tagline">
+  <div class="tagline-container container">
+    <div class="note-title-container">
+      <p class="title-text">Note Taking Web App</p>
+      <div class="clip-img">
+        <img
+          class="clipboard"
+          src="{% static 'images/note-clip-img.svg' %}"
+          alt="Note Clip Image"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="hero-container container">
+    <div class="text-container">
+      <!-- HEADING -->
+      <h1 class="heading">
+        <span class="heading-highlight">Create.</span> Organize. <br />
+        <span class="heading-highlight">Remember.</span> <br />
+        <span>Your Important Stuff</span>
+      </h1>
+      <!-- SUB HEADING -->
+      <p class="description-text">
+        NexNote is the best web app to take notes and organize them so you never
+        have to scroll through a bunch of notes. <br />
+        Easy to create, easy to use and access your notes from anywhere and
+        everywhere.
+      </p>
+
+      <!-- CTA -->
+      <div class="cta-container">
+        <a href="{% url 'signup' %}" class="hero-primary-cta primary-btn">
+          Start Taking Notes
+        </a>
+        <a href="{% url 'login' %}" class="hero-secondary-cta secondary-btn"
+          >Login</a
+        >
+      </div>
+    </div>
+
+    <div class="img-container">
+      <img
+        src="{% static 'images/hero-img.svg' %}"
+        class="hero-image"
+        alt="Hero Image"
+      />
+    </div>
+  </div>
+</section>
+
+{% endblock %}

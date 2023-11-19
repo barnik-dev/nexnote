@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexNote | One Stop Note Taker</title>
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="signup-body">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="signup-logo logo">
+        <span class="logo-initials">N</span>ex<span class="logo-initials">N</span>ote
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="main-content-container container">
+      <!-- LEFT/FORM CONTENT -->
+      <div class="left-content">
+        <!-- HEADING -->
+
+        {% if page == 'login' %}
+
+        <h4 class="secondary-heading">Welcome Back!</h4>
+        <h1 class="primary-heading">Login to your account</h1>
+
+        <!-- SUBHEADING -->
+        <p class="subheading">Enter your credentials to access your notes</p>
+
+        {% else %}
+
+        <h4 class="secondary-heading">Welcome!</h4>
+        <h1 class="primary-heading">Create your account</h1>
+
+        <!-- SUBHEADING -->
+        <p class="subheading">
+          You are going to love <span class="logo-initials">N</span>ex<span class="logo-initials">N</span>ote!
+        </p>
+
+        {% endif %}
+
+        <!-- SIGNUP/LOGIN FORM -->
+        <form action="" method='POST'>
+          {% csrf_token %}
+
+          {% if page == 'signup' %}
+
+          <!-- FULL NAME FIELD -->
+          <div class="form-control">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" required />
+          </div>
+
+          {% endif %}
+
+          <!-- USERNAME FIELD -->
+          <div class="form-control">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required />
+          </div>
+
+          <!-- PASSWORD FIELD -->
+          <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+
+          {% if page == 'signup' %}
+
+          <!-- CONFIRM PASSWORD FIELD -->
+          <div class="form-control">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" name="confirm-password" id="confirm-password" required />
+          </div>
+
+          {% endif %}
+
+          <!-- SUBMIT  -->
+          <input type="submit" value="Login" class="primary-btn" />
+        </form>
+
+        <p class="login-error">{{message}}</p>
+
+        {% if page == 'login' %}
+
+        <!-- SIGN UP LINK -->
+        <p class="form-footer">
+          Don't have an account?
+          <a href="{% url 'signup' %}" class="signup-link">Sign Up</a>
+        </p>
+
+        {% else %}
+
+        <p class="form-footer">
+          Already have an account?
+          <a href="{% url 'login' %}" class="login-link">Login</a>
+        </p>
+
+        {% endif %}
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div class="right-content">
+        <div class="sidebar">
+          <p class="sidebar-tagline">
+            Get All Your Notes In The Palm Of Your Hands
+          </p>
+
+          <div class="notebook-pana">
+            <img src="{% static 'images/notebook-pana.svg' %}" alt="Notebook Pana" />
+          </div>
+
+          <div class="take-note-img">
+            <img src="{% static 'images/take-note.svg' %}" alt="Take Note Image" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

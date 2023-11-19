@@ -1,0 +1,71 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<div class="edit-note-wrapper">
+  <div class="container edit-note-container">
+    <h2 class="create-note-modal-heading">Edit or View your note</h2>
+    <form class="create-note-modal-form" action="" method="POST">
+      {% csrf_token %}
+
+      <div class="create-note-header">
+        <div class="create-note-heading">
+          <input type="text" name="note-heading" id="note-heading" placeholder="Note Heading" value="{{note.heading}}"
+            required />
+        </div>
+        <div class="note-folder-option">
+          <img src="{% static 'images/folder-icon.svg' %}" alt="Folder Icon" class="folder-icon" />
+
+          <select name="folder" id="folder">
+            {% if curr_folder %}
+
+            <option value="{{note.folder.id}} - {{note.folder.name}}">
+              {{note.folder.name}}
+            </option>
+
+            {% endif %}
+
+            <option value="No Folder">No Folder</option>
+
+
+            {% for folder in folders %}
+
+            {% if folder.id != curr_folder.id %}
+            <option value="{{folder.id}} - {{folder.name}}">
+              {{folder.name}}
+            </option>
+            {% endif %}
+
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="create-note-body">
+        <textarea name="note-body" id="create-note-body" placeholder="Write your note here..." required>
+{{note.body}}</textarea>
+      </div>
+
+      <div class="create-note-footer">
+        <div class="note-color-container">
+          <div style="background-color: #0c625d"></div>
+          <div style="background-color: #746a99"></div>
+          <div style="background-color: #284255"></div>
+          <div style="background-color: #472e5b"></div>
+          <div style="background-color: transparent" class="no-color selected-color"></div>
+        </div>
+
+        <input type="text" name="note-color" id="note-color" value="{{note.color}}" />
+
+        <div class="create-note-action-btn">
+          <input type="submit" class="primary-btn save-note" value="Save" />
+          <a href="{{request.META.HTTP_REFERER}}" class="secondary-btn close-create-note-modal">
+            Cancel
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'js/editNote.js' %}"></script>
+
+{% endblock %}

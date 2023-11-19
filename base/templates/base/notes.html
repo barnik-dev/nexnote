@@ -1,0 +1,193 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container container notes-nav-container">
+    <!-- LOGO -->
+    <div class="logo">
+      <span class="logo-initials">N</span>ex<span class="logo-initials">N</span>ote
+    </div>
+
+    <div class="nav-search">
+      <div class="search-icon">
+        <img src="{% static 'images/search-icon.svg' %}" alt="Search Icon" />
+      </div>
+
+      <form method='GET' style="margin-top: 0" action='{% url 'all-notes' %}'>
+        <div class="search-input">
+          <input type="text" placeholder="Search..." class="search" name='q' />
+        </div>
+      </form>
+    </div>
+
+    <!-- NAV ACCOUNT -->
+    <div class="nav-account">
+      <div class="profile-icon">
+        <img src="{% static 'images/profile-icon.svg' %}" alt="Profile Icon" />
+      </div>
+
+      <div class="nav-account-info">
+        <p class="acc-name">{{request.user.name}}</p>
+        <p class="acc-username">@{{request.user.username}}</p>
+      </div>
+
+      <div class="nav-drop-down">
+        <img src="{% static 'images/drop-down-icon.svg' %}" class="drop-down-icon" alt="Drop-Down Icon" />
+
+        <div class="drop-down-container hide">
+          <a href="{% url 'edit-profile' %}" class="edit-profile-link">
+            <img src="{% static 'images/edit-profile-icon.svg' %}" alt="Edit Profile Icon" />
+            Edit Profile
+          </a>
+
+          <a href="{% url 'logout' %}" class="logout-link">
+            <img src="{% static 'images/logout-icon.svg' %}" alt="Logout Icon" />
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- NAV MOBILE SEARCH -->
+<div class="mobile-search">
+  <div class="search-icon">
+    <img src="{% static 'images/search-icon.svg' %}" alt="Search Icon" />
+  </div>
+
+  <form method='GET' style="margin-top: 0" action='{% url 'all-notes' %}'>
+    <div class="search-input">
+      <input type="text" placeholder="Search..." class="search" name='q' />
+    </div>
+  </form>
+</div>
+
+<!-- SECONDARY NAV -->
+<nav class="secondary-nav">
+  <div class="secondary-nav-container container">
+    <div class="secondary-nav-links">
+      {% if not folder_name %}
+
+      <a href="{% url 'folders' %}" class="folders-link">
+        <h1>Folders</h1>
+      </a>
+
+      <a href="{% url 'all-notes' %}" class="notes-link active-link">
+        <h1>All Notes</h1>
+      </a>
+
+      {% else %}
+
+      <a href="{% url 'folders' %}" class="folders-link active-link">
+        <h1>{{folder_name}}</h1>
+      </a>
+
+      {% endif %}
+    </div>
+
+    <button class="primary-btn create-note-btn">
+      <div class="plus-icon-container">
+        <img class="plus-icon" src="{% static 'images/plus-icon.svg' %}" alt="Plus Icon" />
+      </div>
+      New Note
+    </button>
+  </div>
+</nav>
+
+{% if notes %}
+
+<!-- NOTES SECTION -->
+<section class="notes">
+  <div class="notes-container container">
+    {% for note in notes %}
+
+    <div class="note-wrapper" style="background-color: {{note.color}}">
+      <a class="note" href="{% url 'edit-note' note.id %}">
+        <h3 class="note-heading">{{note.heading}}</h3>
+        <p class="note-body">{{note.body|slice:":320"}}...</p>
+      </a>
+
+      <div class="note-footer">
+        <div class="note-created-date">{{note.created|date:"d M, Y"}}</div>
+
+        {% if note.folder %}
+
+        <p style="display: flex; align-items: center; column-gap: 0.6em;">
+          <img src="{% static 'images/folder-icon.svg' %}" alt="Folder Icon" style="width: 1rem;">
+          {{note.folder.name}}
+        </p>
+
+        {% endif %}
+        <a class="note-delete" href="{% url 'delete-note' note.id %}">
+          <img src="{% static 'images/delete-icon.svg' %}" alt="Delete Icon" class="delete-icon" />
+        </a>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</section>
+
+{% else%}
+
+<!-- NO NOTES TEXT -->
+<div class="empty-content-text">There Is No Note To Show!</div>
+
+{% endif %}
+
+<!-- CREATE NOTE MODAL -->
+<dialog class="create-note-modal">
+  <h2 class="create-note-modal-heading">Create your note</h2>
+  <form class="create-note-modal-form" action="{% url 'all-notes' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="create-note-header">
+      <div class="create-note-heading">
+        <input type="text" name="note-heading" id="note-heading" placeholder="Note Heading" required />
+      </div>
+      <div class="note-folder-option">
+        <img src="{% static 'images/folder-icon.svg' %}" alt="Folder Icon" class="folder-icon" />
+
+        <select name="folder" id="folder">
+          <option value="No Folder">No Folder</option>
+
+          {% for folder in folders %}
+
+          <option value="{{folder.id}} - {{folder.name}}">
+            {{folder.name}}
+          </option>
+
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="create-note-body">
+      <textarea name="note-body" id="create-note-body" placeholder="Write your note here..." required></textarea>
+    </div>
+
+    <div class="create-note-footer">
+      <div class="note-color-container">
+        <div style="background-color: #0c625d"></div>
+        <div style="background-color: #746a99"></div>
+        <div style="background-color: #284255"></div>
+        <div style="background-color: #472e5b"></div>
+        <div style="background-color: transparent" class="no-color selected-color"></div>
+      </div>
+
+      <input type="text" name="note-color" id="note-color" value="transparent" />
+
+      <div class="create-note-action-btn">
+        <input type="submit" class="primary-btn save-note" value="Save" />
+        <button type="button" class="secondary-btn close-create-note-modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<script src="{% static 'js/notesPage.js' %}"></script>
+
+{% endblock %}

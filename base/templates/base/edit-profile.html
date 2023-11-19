@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- EDIT PROFILE PAGE -->
+<div class="edit-profile">
+  <div class="edit-profile-container container">
+    <!-- SIDEBAR -->
+    <div class="edit-profile-sidebar">
+      <img src="{% static 'images/edit-profile-graffiti.svg' %}" alt="Sidebar Graffiti" />
+    </div>
+
+    <div class="edit-profile">
+      <h1 class="edit-profile-heading">Edit your profile</h1>
+
+      <!-- EDIT PROFILE FORM -->
+      <form class="edit-profile-form" action="" method="POST">
+
+        {% csrf_token %}
+
+        <!-- FULL NAME FIELD -->
+        <div class="form-control">
+          <label for="name">Full Name</label>
+          <input type="text" name="name" id="name" value="{{user.name}}" />
+        </div>
+
+        <!-- USERNAME FIELD -->
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" value="{{user.username}}" />
+        </div>
+
+        <!-- PASSWORD FIELD -->
+        <div class="form-control">
+          <label for="password">Password (New)</label>
+          <input type="password" name="password" id="password" />
+        </div>
+
+        <!-- SUBMIT  -->
+        <a href="{% url 'delete-user' %}" class="delete-account-btn">
+          Delete your account!
+        </a>
+        <input type="submit" value="Save Changes" class="primary-btn" />
+
+        <p class="login-error">{{message}}</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+
+{% endblock %}
