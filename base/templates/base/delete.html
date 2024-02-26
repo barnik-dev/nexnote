@@ -1,0 +1,31 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<div class="delete-warning-wrapper">
+  <div class="delete-warning">
+    <form action="" method="POST" style="margin-top: 0">
+      {% csrf_token %}
+
+      {% if item == 'folder' %}
+
+      <h4>Do you want to delete your {{folder_name}} Folder?</h4>
+
+      {% elif item == 'note' %}
+
+      <h4>Do you want to delete your {{note_name}}?</h4>
+
+      {% else %}
+
+      <h4>Do you want to delete your account?</h4>
+
+      {% endif %}
+      <p>All the contents will be deleted</p>
+
+      <div class="action-btn-container">
+        <input type="submit" value="Delete" class="confirm-delete-btn" />
+        <a class="close-modal" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

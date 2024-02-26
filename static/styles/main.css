@@ -1,0 +1,1282 @@
+:root {
+  --dark-blue: #1b1e3e;
+  --orange: #e04237;
+  --grayish-white: #d8d7d6;
+  --dark-red: #ff2727;
+  --light-violet: #746a99;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  background-color: var(--dark-blue);
+}
+
+.signup-body {
+  background-color: white;
+}
+
+/******************************************** RESETS ********************************************/
+
+a {
+  text-decoration: none;
+}
+
+/******************************************** UTILITY CLASSES ********************************************/
+
+.container {
+  max-width: 120rem;
+  padding: 0 12em;
+  margin: 0 auto;
+}
+
+.primary-btn {
+  background-color: var(--orange);
+  padding: 0.8em 1.8em;
+  font-size: 1.125rem;
+  transition: transform 0.2s ease-in;
+  color: white;
+  border: none;
+  border-radius: 2em;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.primary-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  border: 1px #e04237 solid;
+  font-size: 1.125rem;
+  padding: 0.8em 2.3em;
+  transition: transform 0.2s ease-in;
+  color: var(--orange);
+  border-radius: 2em;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.secondary-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.active-link {
+  color: var(--orange) !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.selected-color {
+  border: 2px solid white !important;
+}
+
+/******************************************** LANDING PAGE ********************************************/
+
+/* NAVBAR */
+.navbar {
+  padding-top: 3em;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--grayish-white);
+  font-size: 1.8rem;
+}
+
+.logo-initials {
+  color: var(--orange);
+  font-weight: bold;
+}
+
+.signup-logo,
+.login-logo {
+  color: var(--dark-blue);
+}
+
+/******************************************** TAGLINE ********************************************/
+
+.tagline {
+  margin-top: 6em;
+}
+
+.note-title-container {
+  position: relative;
+  width: fit-content;
+}
+
+.title-text {
+  color: var(--grayish-white);
+  border-radius: 2em;
+  background-color: hsla(0, 0%, 85%, 0.35);
+  padding: 0.6em 2.4em;
+}
+
+.clip-img {
+  position: absolute;
+  top: -0.8rem;
+  right: -1rem;
+}
+
+/******************************************** HERO SECTION ********************************************/
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
+}
+
+.heading {
+  color: var(--grayish-white);
+  font-size: 3.4rem;
+  font-weight: bold;
+}
+
+.heading-highlight {
+  color: var(--orange);
+}
+
+.heading > span:nth-child(5) {
+  font-weight: 400;
+}
+
+.description-text {
+  color: var(--grayish-white);
+  font-weight: 400;
+  margin-top: 2em;
+  max-width: 32rem;
+}
+
+/* CTA */
+.cta-container {
+  display: flex;
+  padding-top: 4em;
+  column-gap: 2em;
+}
+
+/* HERO IMAGE */
+.hero-image {
+  width: 110%;
+  margin-top: -6rem;
+}
+
+/******************************************** SIGN UP/LOGIN PAGE ********************************************/
+
+.main-content {
+  margin-top: 1em;
+}
+
+.main-content-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+/* LEFT CONTENT */
+.left-content {
+  margin-top: 3em;
+}
+
+/* HEADING */
+.secondary-heading {
+  color: var(--orange);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.primary-heading {
+  color: var(--dark-blue);
+  font-size: 2.2rem;
+  margin-top: 0.4em;
+  margin-bottom: 0.2em;
+}
+
+/* SUBHEADING */
+.subheading {
+  color: var(--dark-blue);
+}
+
+.subheading .logo-initials {
+  font-weight: 400;
+}
+
+/* SIGNUP / LOGIN / EDIT-PROFILE FORM */
+
+form {
+  margin-top: 3em;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4em;
+  margin-bottom: 1.3em;
+}
+
+label {
+  color: var(--dark-blue);
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  border: 2px solid var(--orange);
+  border-radius: 2em;
+  color: var(--dark-blue);
+  font-size: 1.125rem;
+  padding: 0.8em 1em;
+  width: 130%;
+  font-family: "Noto Sans", sans-serif;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+}
+
+input[type="password"] {
+  font-family: Verdana;
+  letter-spacing: 0.125rem;
+}
+
+/* LOGIN ERROR */
+.login-error {
+  color: var(--dark-red);
+  font-weight: 500;
+  margin-top: 2em;
+  font-size: 1.1rem;
+}
+
+.form-footer {
+  margin-top: 2em;
+  font-size: 1.125rem;
+  color: var(--dark-blue);
+}
+
+.login-link,
+.signup-link {
+  color: var(--orange);
+  font-weight: bold;
+}
+
+/* RIGHT CONTENT */
+.sidebar {
+  background-color: var(--dark-blue);
+  border-radius: 0.8em;
+  position: relative;
+  padding: 4em 10em 5em 4em;
+  min-height: 80vh;
+}
+
+.sidebar-tagline {
+  color: var(--grayish-white);
+  font-size: 2rem;
+  max-width: 30rem;
+  font-weight: bold;
+}
+
+.notebook-pana img {
+  width: 40%;
+  position: absolute;
+  right: 3em;
+  top: 10em;
+}
+
+.take-note-img img {
+  width: 40%;
+  position: absolute;
+  left: -4em;
+  bottom: 4em;
+}
+
+/******************************************** EDIT PROFILE PAGE ********************************************/
+.edit-profile-container {
+  display: flex;
+  margin-top: 4em;
+  column-gap: 12em;
+  margin-bottom: 3em;
+}
+
+/* SIDEBAR */
+.edit-profile-sidebar {
+  background-color: white;
+  min-height: 49rem;
+  border-radius: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-profile-sidebar img {
+  width: 100%;
+}
+
+.edit-profile-heading {
+  color: #d8d7d6;
+  font-weight: 500;
+}
+
+/* EDIT PROFILE FORM */
+.edit-profile {
+  position: relative;
+  min-width: 30rem;
+}
+
+.edit-profile-form {
+  margin-top: 8em;
+}
+
+.edit-profile-form label {
+  color: white;
+}
+
+.edit-profile-form input[type="text"],
+.edit-profile-form input[type="password"] {
+  width: 100%;
+  background-color: transparent;
+  font-weight: 500;
+  color: var(--grayish-white);
+}
+
+.edit-profile-form input[type="submit"] {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.delete-account-btn {
+  position: absolute;
+  left: 0;
+  bottom: 12em;
+  background-color: var(--dark-red);
+  border: none;
+  font-family: "Noto Sans", sans-serif;
+  color: white;
+  border-radius: 0.4em;
+  padding: 1em 2em;
+  font-weight: bold;
+}
+
+.delete-account-btn:hover {
+  cursor: pointer;
+}
+
+/******************************************** DELETE WARNING PAGE ********************************************/
+.delete-warning-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-warning {
+  background-color: white;
+  padding: 3em 4em;
+  max-width: 40rem;
+  border: none;
+  border-radius: 0.925rem;
+  margin: auto auto;
+  box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
+.delete-warning h4 {
+  font-size: 1.3rem;
+  color: var(--dark-blue);
+}
+
+.delete-warning p {
+  font-size: 1.13rem;
+  margin-top: 0.4em;
+}
+
+.delete-warning .action-btn-container {
+  display: flex;
+  align-items: center;
+  column-gap: 2em;
+  margin-top: 2em;
+}
+
+.confirm-delete-btn {
+  border: none;
+  background-color: var(--dark-red);
+  color: white;
+  padding: 0.8em 1.5em;
+  border-radius: 2em;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+}
+
+.close-modal {
+  background-color: var(--light-violet);
+  border: none;
+  color: white;
+  padding: 0.8em 1.5em;
+  border-radius: 2em;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+}
+
+.confirm-delete-btn,
+.close-modal {
+  transition: transform 0.2s ease-in;
+}
+
+.confirm-delete-btn:hover,
+.close-modal:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/******************************************** FOLDERS PAGE ********************************************/
+
+/* PRIMARY NAVBAR */
+.nav-search,
+.mobile-search {
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  background-color: var(--grayish-white);
+  min-width: 30rem;
+}
+
+.mobile-search {
+  margin: 1.7em 3em 0;
+  display: none;
+  min-width: fit-content;
+}
+
+.search-icon {
+  padding-top: 0.5em;
+  padding-left: 1em;
+}
+
+.search-input input[type="text"] {
+  background-color: transparent;
+  border: none;
+  font-size: 1.1rem;
+  padding: 0.8em 1.1em;
+  outline: none;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* NAV-ACCOUNT */
+.nav-account {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-account:hover {
+  cursor: pointer;
+}
+
+.profile-icon {
+  margin-right: 0.5em;
+  margin-top: 0.3em;
+}
+
+.profile-icon img {
+  width: 100%;
+}
+
+.acc-name {
+  color: var(--grayish-white);
+  font-weight: 700;
+  font-size: 0.925rem;
+}
+
+.acc-username {
+  color: var(--grayish-white);
+  font-size: 0.8rem;
+}
+
+/* DROP DOWN */
+.nav-drop-down {
+  margin-top: 0.6em;
+  margin-left: 0.8em;
+}
+
+.drop-down-icon {
+  transition: all 0.2s ease-in;
+  transform: rotate(180deg);
+}
+
+.drop-down-icon.rotate {
+  transform: rotate(0);
+}
+
+.drop-down-container {
+  position: absolute;
+  background-color: white;
+  padding: 1em 1.2em;
+  width: 80%;
+  right: 0;
+  top: 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  border-radius: 0.8em;
+  z-index: 99;
+}
+
+.edit-profile-link,
+.logout-link {
+  display: flex;
+  align-items: center;
+  column-gap: 0.7em;
+  color: var(--dark-blue);
+}
+
+/* SECONDARY NAV */
+.secondary-nav {
+  margin-top: 3em;
+}
+
+.secondary-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.secondary-nav-links {
+  display: flex;
+  align-items: center;
+  column-gap: 1.8em;
+}
+
+.folders-link,
+.notes-link {
+  color: var(--grayish-white);
+  font-size: 1.4rem;
+}
+
+/* CREATE FOLDER BUTTON */
+.plus-icon-container {
+  margin-top: 0.3em;
+  margin-right: 0.4em;
+}
+
+.create-folder-btn,
+.create-note-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em 1.4em;
+  font-size: 1rem;
+}
+
+/* FOLDERS SECTION */
+.folders {
+  margin: 3em 0;
+}
+
+.folders-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.8em;
+}
+
+.folder {
+  background-color: var(--light-violet);
+  border-radius: 1.2em;
+  padding: 2.8em 2em;
+}
+
+/* FOLDER ICON */
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.folder-option-container {
+  display: flex;
+  align-items: center;
+  column-gap: 1.2em;
+}
+
+.edit-folder:hover,
+.delete-folder:hover {
+  cursor: pointer;
+}
+
+/* FOLDER NAME AND DATE */
+.folder-text {
+  margin-top: 1.5em;
+}
+
+.folder-name {
+  color: var(--dark-blue);
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.folder-created-date {
+  color: var(--dark-blue);
+  font-size: 0.925rem;
+  margin-top: 0.5em;
+}
+
+/******************************************** CREATE FOLDER MODAL ********************************************/
+.create-folder-modal {
+  background-color: white;
+  padding: 2.6em 2.1em;
+  min-width: 40rem;
+  border: none;
+  border-radius: 0.925rem;
+  margin: auto auto;
+  box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
+.create-folder-modal::backdrop {
+  backdrop-filter: blur(4px);
+}
+
+.create-folder-modal h4 {
+  font-size: 1.3rem;
+  color: var(--dark-blue);
+}
+
+.create-folder-modal form {
+  margin-top: 1.6em;
+}
+
+.create-folder-modal form input[type="text"] {
+  width: 80%;
+}
+
+.create-folder-modal .action-btn-container {
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+  column-gap: 1em;
+}
+
+.confirm-create-folder-btn {
+  background-color: var(--orange);
+  color: white;
+  padding: 0.8em 1.5em;
+  border-radius: 2em;
+  border: none;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+}
+
+/******************************************** NOTES PAGE ********************************************/
+.notes {
+  margin: 3em 0;
+}
+
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+}
+
+.note-wrapper {
+  position: relative;
+  border: 2px solid var(--grayish-white);
+  padding: 1.8em;
+  border-radius: 1em;
+}
+
+.note {
+  color: white;
+}
+
+.note:hover {
+  cursor: pointer;
+}
+
+.note-heading {
+  font-size: 1.125rem;
+  margin-bottom: 1em;
+}
+
+.note-body {
+  font-size: 0.925rem;
+  line-height: 1.4;
+  padding-bottom: 2.5em;
+}
+
+.note-footer {
+  color: var(--grayish-white);
+  font-weight: 500;
+  font-size: 0.825rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 80%;
+  bottom: 1.3em;
+  left: 1.8em;
+}
+
+.note-delete:hover {
+  cursor: pointer;
+}
+
+/******************************************** CREATE NOTE MODAL ********************************************/
+.create-note-modal {
+  background-color: var(--dark-blue);
+  min-width: 45rem;
+  padding: 1.6em 3em;
+  border-radius: 1em;
+  margin: auto auto;
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.18);
+  border: none;
+}
+
+.create-note-modal::backdrop {
+  backdrop-filter: blur(4px);
+}
+
+.create-note-modal-form {
+  margin-top: 1.5em;
+}
+
+.create-note-modal-heading {
+  color: var(--orange);
+  font-size: 1.8rem;
+}
+
+/* CREATE NOTE HEADING */
+.create-note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.8em;
+}
+
+.create-note-heading input[type="text"] {
+  background-color: transparent;
+  border-color: var(--grayish-white);
+  border-radius: 0.8em;
+  color: white;
+  font-weight: 500;
+  padding: 0.7em 0.8em;
+}
+
+/* CREATE NOTE FODLER OPTION */
+.note-folder-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--light-violet);
+  padding: 0.7em 0.8em;
+  border-radius: 0.8em;
+}
+
+.note-folder-option .folder-icon {
+  width: 16%;
+}
+
+.note-folder-option select {
+  border: none;
+  background-color: transparent;
+  color: var(--dark-blue);
+  font-size: 0.925rem;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.note-folder-option select:focus {
+  outline: none;
+}
+
+/* CREATE NOTE BODY */
+#create-note-body {
+  resize: none;
+  width: 100%;
+  min-height: 30rem;
+  margin-top: 0.8em;
+  background-color: transparent;
+  border: 1px solid var(--orange);
+  border-radius: 0.8em;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: white;
+  padding: 1em;
+}
+
+#create-note-body:focus {
+  outline: none;
+}
+
+/* CREATE NOTE FOOTER */
+.create-note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3em;
+}
+
+.create-note-action-btn {
+  display: flex;
+  align-items: center;
+  column-gap: 1em;
+}
+
+.save-note {
+  padding: 0.6em 1.8em;
+}
+
+.close-create-note-modal {
+  font-size: 1.125rem;
+  padding: 0.5em 1.2em;
+}
+
+/* TO SEND PREDEFINIED COLOR INFORMATION (NOT THE COLOR PICKER TYPE) OF THE NOTE TO THE BACKEND SERVER USING FORM, WE USED A METHOD IN WHICH AS WE SELECT COLOR IN THE GIVEN OPTION, THE RGB VALUE OF THAT COLOR IS SET TO THE INPUT TYPE=TEXT's VALUE AND THEN IT GET SEND TO THE BACKEND AND THE INPUT TYPE=TEXT IS HIDDEN FROM THE USER SO AS USER WILL NOT ABLE TO CHANGE THE RGB VALUE. */
+.note-color-container {
+  display: flex;
+  align-items: center;
+  column-gap: 0.4em;
+}
+
+.note-color-container > div {
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 100%;
+}
+
+.note-color-container > div:hover {
+  cursor: pointer;
+}
+
+.note-color-container .no-color {
+  border: 1px solid white;
+  position: relative;
+}
+.note-color-container .no-color::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background-color: white;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(-30deg);
+}
+
+#note-color {
+  display: none;
+}
+
+/******************************************** EMPTY CONTENT TEXT ********************************************/
+.empty-content-text {
+  font-size: 1.5rem;
+  color: var(--light-violet);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/******************************************** EDIT NOTE PAGE ********************************************/
+.edit-note-container {
+  max-width: 80rem;
+  margin-top: 5em;
+  margin-bottom: 4em;
+}
+
+/******************************************** MEDIA QUERIES ********************************************/
+
+/* MEDIUM DISPLAYS */
+@media only screen and (max-width: 1366px) {
+  .container {
+    padding: 0 6em;
+  }
+
+  /* LANDING PAGE */
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  /* SIGN UP/LOGIN PAGE */
+  .main-content-container {
+    gap: 6em;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+  }
+
+  .sidebar {
+    padding: 4em 2em;
+  }
+}
+
+/* SMALL DISPLAYS */
+@media only screen and (max-width: 1024px) {
+  .container {
+    padding: 0 3em;
+  }
+
+  .description-text {
+    font-size: 0.825rem;
+  }
+
+  /* SIGN UP/LOGIN PAGE */
+  .primary-heading {
+    font-size: 1.8rem;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 130%;
+  }
+
+  .sidebar-tagline {
+    font-size: 1.5rem;
+    max-width: 20rem;
+  }
+
+  .notebook-pana img,
+  .take-note-img img {
+    width: 50%;
+  }
+
+  .form-footer {
+    margin-bottom: 2em;
+  }
+
+  /* EDIT PROFILE PAGE */
+  .edit-profile-container {
+    column-gap: 5em;
+  }
+
+  .edit-profile-sidebar {
+    min-height: 45rem;
+  }
+
+  /* FOLDERS PAGE */
+  .nav-search {
+    min-width: 24rem;
+  }
+
+  .folders-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* NOTES PAGE */
+  .notes-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* TABLET DISPLAYS */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    padding-top: 2em;
+  }
+
+  .tagline {
+    margin-top: 3em;
+  }
+
+  .note-title-container {
+    margin: 0 auto;
+  }
+
+  .hero-container {
+    flex-direction: column;
+  }
+
+  .text-container {
+    order: 2;
+    margin: 3em 0;
+    text-align: center;
+  }
+
+  .description-text {
+    max-width: 25rem;
+    margin: 2em auto 0;
+  }
+
+  .cta-container {
+    justify-content: center;
+  }
+
+  .img-container {
+    order: 1;
+  }
+
+  .hero-image {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  /* SIGN UP/LOGIN PAGE */
+  .main-content-container {
+    display: block;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  /* EDIT PROFILE PAGE */
+  .edit-profile-container {
+    column-gap: 2em;
+  }
+
+  .edit-profile-sidebar {
+    min-height: 40rem;
+  }
+
+  .edit-profile {
+    min-width: 23rem;
+  }
+
+  .edit-profile-form {
+    margin-top: 5em;
+  }
+
+  .delete-account-btn {
+    bottom: 8em;
+  }
+
+  /* DELETE WARNING MODAL */
+  .delete-warning {
+    margin: auto 2em;
+  }
+
+  /* FOLDERS PAGE */
+  .nav-search {
+    display: none;
+  }
+
+  .mobile-search {
+    display: flex;
+  }
+
+  .folders-link,
+  .notes-link {
+    font-size: 1.2rem;
+  }
+
+  .create-folder-btn,
+  .create-note-btn {
+    font-size: 0.925rem;
+  }
+
+  .folders-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* CREATE FOLDER MODAL */
+  .create-folder-modal {
+    min-width: fit-content;
+  }
+
+  /* NOTES PAGE */
+  .notes-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* CREATE NOTES MODAL */
+  .create-note-modal {
+    min-width: fit-content;
+  }
+}
+
+/* LARGE MOBILE DISPLAYS */
+@media only screen and (max-width: 540px) {
+  .container {
+    padding: 0 1.8em;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    font-size: 0.925rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  /* EDIT PROFILE PAGE */
+  .edit-profile-container {
+    display: block;
+  }
+
+  .edit-profile-sidebar {
+    display: none;
+  }
+
+  .edit-profile {
+    min-width: fit-content;
+  }
+
+  .delete-account-btn {
+    position: static;
+    margin-top: 2em;
+  }
+
+  .edit-profile-form input[type="submit"] {
+    position: static;
+    margin-top: 3em;
+    width: 100%;
+    text-align: center;
+  }
+
+  .delete-account-btn {
+    bottom: -8em;
+  }
+
+  /* DELETE WARNING MODAL */
+  .delete-warning {
+    padding: 1.8em 2em;
+  }
+
+  .delete-warning h4 {
+    font-size: 1.2rem;
+  }
+
+  .delete-warning p {
+    font-size: 0.925rem;
+  }
+
+  .confirm-delete-btn,
+  .close-modal {
+    font-size: 0.925rem;
+  }
+
+  /* FOLDERS PAGE */
+  .mobile-search {
+    margin-inline: 1.8em;
+  }
+
+  .folders-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  /* CREATE FOLDER MODAL */
+  .confirm-create-folder-btn {
+    font-size: 0.925rem;
+  }
+
+  /* NOTE PAGE */
+  .notes-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* SMALL MOBILE DISPLAY */
+@media only screen and (max-width: 414px) {
+  /* LANDING PAGE */
+  .cta-container {
+    padding-top: 2em;
+  }
+
+  .hero-primary-btn,
+  .hero-secondary-btn {
+    /* padding: 0.6em 1.3em; */
+    font-size: 0.8rem;
+  }
+
+  /* FOLDER PAGE */
+  .folders-nav-container,
+  .notes-nav-container {
+    display: block;
+    text-align: center;
+  }
+
+  .nav-account {
+    justify-content: center;
+    margin-top: 1em;
+  }
+
+  .drop-down-container {
+    left: 0;
+    width: 100%;
+  }
+
+  .secondary-nav-container {
+    display: block;
+  }
+
+  .create-folder-btn,
+  .create-note-btn {
+    margin-top: 2em;
+    width: 100%;
+  }
+
+  /* NOTES PAGE / CREATE NOTE MODAL */
+  .create-note-modal {
+    min-width: 18rem;
+    padding: 1.3em 1.8em;
+  }
+
+  .create-note-modal-heading {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .create-note-modal-form {
+    margin-top: 1.8em;
+  }
+
+  .create-note-header {
+    display: block;
+  }
+
+  .create-note-heading input[type="text"] {
+    font-size: 1rem;
+    margin-bottom: 0.7em;
+  }
+
+  .note-folder-option .folder-icon {
+    width: 10%;
+  }
+
+  #create-note-body {
+    min-height: 20rem;
+    font-size: 0.925rem;
+    margin-top: 1.5em;
+  }
+
+  .create-note-footer {
+    display: block;
+    margin-top: 1.7em;
+  }
+
+  .create-note-action-btn {
+    margin-top: 1.3em;
+    justify-content: center;
+  }
+
+  .note-color-container {
+    justify-content: center;
+  }
+
+  /* EMPTY CONTENT TEXT */
+  .empty-content-text {
+    top: 65%;
+  }
+}

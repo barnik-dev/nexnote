@@ -1,0 +1,143 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container container folders-nav-container">
+    <!-- LOGO -->
+    <div class="logo">
+      <span class="logo-initials">N</span>ex<span class="logo-initials">N</span>ote
+    </div>
+
+    <div class="nav-search">
+      <div class="search-icon">
+        <img src="{% static 'images/search-icon.svg' %}" alt="Search Icon" />
+      </div>
+
+      <form method='GET' style="margin-top: 0" action='{% url 'folders' %}'>
+        <div class="search-input">
+          <input type="text" placeholder="Search..." class="search" name='q' />
+        </div>
+      </form>
+    </div>
+
+    <!-- NAV ACCOUNT -->
+    <div class="nav-account">
+      <div class="profile-icon">
+        <img src="{% static 'images/profile-icon.svg' %}" alt="Profile Icon" />
+      </div>
+
+      <div class="nav-account-info">
+        <p class="acc-name">{{request.user.name}}</p>
+        <p class="acc-username">@{{request.user.username}}</p>
+      </div>
+
+      <div class="nav-drop-down">
+        <img src="{% static 'images/drop-down-icon.svg' %}" class="drop-down-icon" alt="Drop-Down Icon" />
+
+        <div class="drop-down-container hide">
+          <a href="{% url 'edit-profile' %}" class="edit-profile-link">
+            <img src="{% static 'images/edit-profile-icon.svg' %}" alt="Edit Profile Icon" />
+            Edit Profile
+          </a>
+
+          <a href="{% url 'logout' %}" class="logout-link">
+            <img src="{% static 'images/logout-icon.svg' %}" alt="Logout Icon" />
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- NAV MOBILE SEARCH -->
+<div class="mobile-search">
+  <div class="search-icon">
+    <img src="{% static 'images/search-icon.svg' %}" alt="Search Icon" />
+  </div>
+
+  <form method='GET' style="margin-top: 0" action='{% url 'folders' %}'>
+    <div class="search-input">
+      <input type="text" placeholder="Search..." class="search" name='q' />
+    </div>
+  </form>
+</div>
+
+<!-- SECONDARY NAV -->
+<nav class="secondary-nav">
+  <div class="secondary-nav-container container">
+    <div class="secondary-nav-links">
+      <a href="{% url 'folders' %}" class="folders-link active-link">
+        <h1>Folders</h1>
+      </a>
+
+      <a href="{% url 'all-notes' %}" class="notes-link">
+        <h1>All Notes</h1>
+      </a>
+    </div>
+
+    <button class="primary-btn create-folder-btn">
+      <div class="plus-icon-container">
+        <img class="plus-icon" src="{% static 'images/plus-icon.svg' %}" alt="Plus Icon" />
+      </div>
+      New Folder
+    </button>
+  </div>
+</nav>
+
+{% if folders %}
+
+<!-- FOLDERS SECTION -->
+<section class="folders">
+  <div class="container folders-container">
+    {% for folder in folders %}
+
+    <div class="folder">
+      <div class="icon-container">
+        <div class="folder-icon">
+          <img src="{% static 'images/folder-icon.svg' %}" alt="Folder Icon" />
+        </div>
+
+        <div class="folder-option-container">
+          <a class="delete-folder" href="{% url 'delete-folder' folder.id %}">
+            <img src="{% static 'images/delete-icon.svg' %}" alt="Delete Icon" />
+          </a>
+        </div>
+      </div>
+
+      <div class="folder-text">
+        <a href="{% url 'notes' folder.id %}">
+          <h3 class="folder-name">{{folder.name}}</h3>
+        </a>
+        <p class="folder-created-date">{{folder.created|date:"d M, Y"}}</p>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</section>
+
+{% else %}
+<!-- NO FOLDER TEXT -->
+<div class="empty-content-text">No Folder Has Been Created!</div>
+
+{% endif %}
+
+<!-- CREATE NEW FOLDER MODAL -->
+<dialog class="create-folder-modal">
+  <h4>Create New Folder</h4>
+  <form method="POST" action="">
+    {% csrf_token %}
+
+    <input type="text" placeholder="Folder Name" name="folder-name" id="folder-name" required />
+
+    <div class="action-btn-container">
+      <input type="submit" value="Create" class="primary-btn confirm-create-folder-btn" />
+      <button type="button" class="close-modal">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="{% static 'js/foldersPage.js' %}"></script>
+
+{% endblock %}
